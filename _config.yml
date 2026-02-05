@@ -1,0 +1,9 @@
+title: jhlee-si
+description: "GitHub Pages with Jekyll + Actions"
+url: "https://jhlee-si.github.io"
+baseurl: ""
+
+theme: minima
+plugins:
+  - jekyll-feed
+

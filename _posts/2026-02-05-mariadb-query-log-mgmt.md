@@ -1,8 +1,8 @@
 ---
 title: "MariaDB 쿼리 로그 관리"
 date: 2026-02-05 14:07:00 +0900
-categories: [dev, mariadb]
-tags: [mariadb]
+categories: [SI, DB]
+tags: [SI, DB, mariadb]
 ---
 
 # mariadb-query-log-mgmt

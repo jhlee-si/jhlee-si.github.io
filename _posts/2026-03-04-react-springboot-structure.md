@@ -5,9 +5,12 @@ categories: [SI, Structure]
 tags: [SI, structure]
 mermaid: true
 ---
-# 개발
-MariaDB Query 작업 이력 정보를 관리
+# 환경 구성a
+## Proxy   : Nginx
+## Frontend: React
+## Backend : Spring Boot
 
+### 1) 개발
 ```mermaid
 flowchart LR
   U[Browser] -->|HTTPS :443| N[Nginx]
@@ -18,7 +21,7 @@ flowchart LR
   V -->|XHR/Fetch to /api/*| N
 ```
 
-# 운영
+### 2) 운영
 ```mermaid
 flowchart LR
   U[Browser] -->|HTTPS :443| N[Nginx]

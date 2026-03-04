@@ -5,7 +5,20 @@ categories: [SI, Structure]
 tags: [SI, structure]
 mermaid: true
 ---
+# 개발
+MariaDB Query 작업 이력 정보를 관리
 
+```mermaid
+flowchart LR
+  U[Browser] -->|HTTPS :443| N[Nginx]
+
+  N -->|/ SPA, HMR| V["Vite Dev Server<br/>(React)"]
+  N -->|/api/* REST/Auth| B["Spring Boot<br/>(Business + Auth)"]
+
+  V -->|XHR/Fetch to /api/*| N
+```
+
+# 운영
 ```mermaid
 flowchart LR
   U[Browser] -->|HTTPS :443| N[Nginx]

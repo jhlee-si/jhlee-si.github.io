@@ -6,9 +6,10 @@ tags: [SI, structure]
 mermaid: true
 ---
 ## 1) 환경 구성
-### 1.1 Proxy   : Nginx
-### 1.2 Frontend: React
-### 1.3 Backend : Spring Boot
+### 1.1 OS      : Ubuntu (24.04)
+### 1.2 Proxy   : Nginx (1.24)
+### 1.3 Frontend: React (19.2.5)
+### 1.4 Backend : Spring Boot (2.7.15), JDK (1.8)
 
 ## 2) 환경별 구조도
 ### 2.1 개발

@@ -5,12 +5,13 @@ categories: [SI, Structure]
 tags: [SI, structure]
 mermaid: true
 ---
-# 환경 구성a
-## Proxy   : Nginx
-## Frontend: React
-## Backend : Spring Boot
+## 1) 환경 구성
+### 1.1 Proxy   : Nginx
+### 1.2 Frontend: React
+### 1.3 Backend : Spring Boot
 
-### 1) 개발
+## 2) 환경별 구조도
+### 2.1 개발
 ```mermaid
 flowchart LR
   U[Browser] -->|HTTPS :443| N[Nginx]
@@ -21,7 +22,7 @@ flowchart LR
   V -->|XHR/Fetch to /api/*| N
 ```
 
-### 2) 운영
+### 2.2 운영
 ```mermaid
 flowchart LR
   U[Browser] -->|HTTPS :443| N[Nginx]

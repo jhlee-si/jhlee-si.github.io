@@ -11,3 +11,4 @@ flowchart LR
   U[Browser] -->|HTTPS :443| N[Nginx]
   N -->|/ (Static SPA)| S[React dist]
   N -->|/api/* (REST/Auth)| B[Spring Boot]
+```

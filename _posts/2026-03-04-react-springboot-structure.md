@@ -8,5 +8,5 @@ tags: [SI, structure]
 flowchart LR
   U[Browser] -->|HTTPS :443| N[Nginx]
 
-  N -->|"/ (Static SPA)"| S["React Build Artifacts<br/>(/dist served by Nginx)"]
-  N -->|"/api/* (REST/Auth)"| B["Spring Boot<br/>(Business + Auth)"]
+  N -->|/ (Static SPA)| S["React Build Artifacts<br/>(/dist served by Nginx)"]
+  N -->|/api/* (REST/Auth)| B["Spring Boot<br/>(Business + Auth)"]

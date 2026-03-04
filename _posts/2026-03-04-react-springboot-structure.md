@@ -6,6 +6,7 @@ tags: [SI, structure]
 mermaid: true
 ---
 
+```mermaid
 flowchart LR
   U[Browser] -->|HTTPS :443| N[Nginx]
   N -->|/ (Static SPA)| S[React dist]

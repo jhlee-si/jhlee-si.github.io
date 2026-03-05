@@ -33,6 +33,8 @@ flowchart LR
 ```
 
 ## 3) Nginx Config 설정
+파일 경로: /etc/nginx/conf.d/{파일명}.confg
+
 ### 3.1 개발 환경일 때
 ```conf
 # React Proxy
@@ -128,15 +130,25 @@ server {
   # =========================
   # 5) (선택) 루트(/) 정책
   # =========================
-  # 루트로 오면 /dev/로 보내고 싶으면:
   location / {
     try_files $uri $uri/ /index.html;
   }
-
-  # 루트 이하 다른 경로는 404로 막고 싶으면(원하는 정책에 따라):
-  # location / {
-  #   return 404;
-  # }
 }
 
 ```
+
+#### 3.2.1 Nginx Serve 주의 사항
+* 정적 결과물 경로: /var/wwww/{프로젝트명}
+
+##### 왜 하필 /var/www를 많이 쓰나?
+* 역사적으로 Apache/Nginx 같은 웹서버의 정적 컨텐츠 디렉터리로 널리 사용됨
+* 권한/소유자 구성을 하기 쉬움(예: www-data, nginx 사용자)
+* 배포 스크립트/가이드가 대부분 이 경로를 기본으로 설명함
+* nginx 설정에서 root나 alias로 연결하기 편함
+
+##### 꼭 /var/www여야 하나요?
+* 아무 경로든 가능하지만 nginx가 그 경로를 읽을 수 있는 권한만 있으면 가능
+
+##### 언제 /var/www가 특히 어울리나?
+* 운영에서 React를 npm run build → dist/ 만들어서 nginx가 직접 서빙할 때
+* “웹 컨텐츠”를 OS 관례대로 관리하고 싶을 때

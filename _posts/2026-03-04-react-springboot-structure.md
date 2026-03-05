@@ -26,23 +26,23 @@ flowchart LR
 ### 2.2 운영
 ```mermaid
 flowchart LR
- subgraph C["Client Browser"]
+ subgraph C["Client (Browser)"]
     direction TB
         U["Browser UI"]
-        R["React App runs in Browser"]
+        R["React App (runs in Browser)"]
   end
- subgraph N["Nginx (Reverse Proxy + Static Hosting)"]
+ subgraph N["Nginx<br>(Reverse Proxy + Static Hosting)"]
     direction TB
-        NSPA["/ Static SPA<br>serve React dist<br>index.html, js, css"]
-        NAPI["/api/* REST/Auth<br>proxy_pass to Spring Boot"]
+        NSPA["/ (Static SPA)<br>serve React dist<br>(index.html, js, css)"]
+        NAPI["/api/* (REST/Auth)<br>proxy_pass -&gt; Spring Boot"]
   end
  subgraph S["Backend"]
     direction TB
-        B["Spring Boot<br>Business + Auth"]
+        B["Spring Boot<br>(Business + Auth)"]
   end
     U -- loads & executes SPA --> R
-    C -- HTTPS :443 GET / --> NSPA
-    R -- fetch /api/* Cookie/JWT --> NAPI
+    C -- HTTPS :443 (GET /) --> NSPA
+    R -- fetch /api/* (Cookie/JWT) --> NAPI
     NAPI --> B
 ```
 

@@ -34,7 +34,7 @@ flowchart LR
 
 ## 3) Nginx Config 설정
 ### 3.1 개발 환경일 때
-```sql
+```conf
 # React Proxy
 upstream vite_dev {
   server 127.0.0.1:5173;
@@ -82,7 +82,7 @@ server {
 
 
 ### 3.2 운영 환경일 때
-```sql
+```conf
 # Backend Proxy
 upstream backend {
   server 127.0.0.1:8080;

@@ -25,25 +25,35 @@ flowchart LR
 
 ### 2.2 운영
 ```mermaid
-flowchart LR
- subgraph C["Client (Browser)"]
+flowchart LR  
+  subgraph C["Client (Browser)"]
     direction TB
-        U["Browser UI"]
-        R["React App (runs in Browser)"]
+    U["Browser UI"]
+    R["React App (runs in Browser)"]
+    U -->|loads & executes SPA| R
   end
- subgraph N["Nginx<br>(Reverse Proxy + Static Hosting)"]
+
+  %% ===== Nginx =====
+  subgraph N[Nginx]
     direction TB
-        NSPA["/ (Static SPA)<br>serve React dist<br>(index.html, js, css)"]
-        NAPI["/api/* (REST/Auth)<br>proxy_pass -&gt; Spring Boot"]
+    NTitle["(Reverse Proxy + Static Hosting)"]:::note
+    NSPA["/ (Static SPA)<br/>serve React dist<br/>(index.html, js, css)"]
+    NAPI["/api/* (REST/Auth)<br/>proxy_pass -> Spring Boot"]
+    NTitle --- NSPA
   end
- subgraph S["Backend"]
+
+  %% ===== Backend =====
+  subgraph S[Backend]
     direction TB
-        B["Spring Boot<br>(Business + Auth)"]
+    B["Spring Boot<br/>(Business + Auth)"]
   end
-    U -- loads & executes SPA --> R
-    C -- HTTPS :443 (GET /) --> NSPA
-    R -- fetch /api/* (Cookie/JWT) --> NAPI
-    NAPI --> B
+
+  %% Flows
+  C -- HTTPS :443 (GET /) --> NSPA
+  R -- fetch /api/* (Cookie/JWT) --> NAPI
+  NAPI --> B
+
+  classDef note fill:#fff,stroke:#999,color:#333,stroke-dasharray: 3 3;
 ```
 
 ## 3) Nginx Config 설정

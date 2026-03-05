@@ -26,17 +26,24 @@ flowchart LR
 ### 2.2 운영
 ```mermaid
 flowchart LR
-  U[Browser] -->|HTTPS :443| N[Nginx]
-
-  %% 1) Initial page load (static)
-  N -->|GET / index.html, js, css| S["Static SPA Files<br/>(React dist served by Nginx)"]
-
-  %% 2) App runs in the browser
-  S -->|Loaded & executed| R["React App (runs in Browser)"]
-
-  %% 3) API calls initiated by the React app (from the browser)
-  R -->|fetch /api/* - Cookie/JWT| N
-  N -->|proxy_pass /api/*| B["Spring Boot<br/>(Business + Auth)"]
+ subgraph C["Client Browser"]
+    direction TB
+        U["Browser UI"]
+        R["React App runs in Browser"]
+  end
+ subgraph N["Nginx (Reverse Proxy + Static Hosting)"]
+    direction TB
+        NSPA["/ Static SPA<br>serve React dist<br>index.html, js, css"]
+        NAPI["/api/* REST/Auth<br>proxy_pass to Spring Boot"]
+  end
+ subgraph S["Backend"]
+    direction TB
+        B["Spring Boot<br>Business + Auth"]
+  end
+    U -- loads & executes SPA --> R
+    C -- HTTPS :443 GET / --> NSPA
+    R -- fetch /api/* Cookie/JWT --> NAPI
+    NAPI --> B
 ```
 
 ## 3) Nginx Config 설정
